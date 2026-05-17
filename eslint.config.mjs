@@ -1,7 +1,7 @@
 import js from "@eslint/js";
 import globals from "globals";
 import { defineConfig } from "eslint/config";
-import rules from "./eslint/index.js";   // ← une seule import
+import rules from "./eslint/index.js";
 
 export default defineConfig([
   {
@@ -15,5 +15,18 @@ export default defineConfig([
       },
     },
     rules,
+  },
+  {
+    files: ["tests/**"],
+    languageOptions: {
+      globals: {
+        ...globals.jest,
+      },
+    },
+    rules: {
+      "no-magic-numbers": "off",
+      "max-lines-per-function": "off",
+      "id-length": "off",
+    },
   },
 ]);

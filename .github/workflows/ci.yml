@@ -1,0 +1,31 @@
+name: CI - Qualimétrie
+
+on:
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build (type-check)
+        run: npm run build
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Tests unitaires + Couverture (>= 80%)
+        run: npm run test:coverage
+
+      - name: Tests de performance
+        run: npm run test:perf

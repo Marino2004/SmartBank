@@ -4,10 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
     "dev": "node index.js",
+    "build": "tsc --noEmit",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
+    "test:coverage": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage",
+    "test:perf": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --testPathPatterns=performance",
     "lint": "npx eslint .",
-    "lint:report": "npx eslint . --format html --output-file reports/eslint-report.html && open reports/eslint-report.html"
+    "lint:report": "npx eslint . --format html --output-file reports/eslint-report.html && open reports/eslint-report.html",
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,mjs,cjs}": [
+      "eslint --fix"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -20,7 +31,14 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
+    "@jest/globals": "^30.4.1",
     "@microsoft/eslint-formatter-sarif": "^3.1.0",
+    "@types/express": "^5.0.6",
+    "@types/jest": "^30.0.0",
+    "@types/supertest": "^7.2.0",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.8",
+    "cross-env": "^10.1.0",
     "eslint": "^9.39.4",
     "eslint-formatter-html": "^2.7.3",
     "eslint-nibble": "^9.1.1",
@@ -30,6 +48,11 @@
     "eslint-plugin-security": "^4.0.0",
     "eslint-plugin-sonarjs": "^4.0.3",
     "eslint-plugin-unused-imports": "^4.4.1",
-    "globals": "^17.6.0"
+    "globals": "^17.6.0",
+    "husky": "^9.1.7",
+    "jest": "^30.4.2",
+    "lint-staged": "^16.4.0",
+    "supertest": "^7.2.2",
+    "typescript": "^6.0.3"
   }
 }
