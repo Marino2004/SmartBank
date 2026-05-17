@@ -1,3 +1,5 @@
+/* eslint-disable no-magic-numbers */
+
 export default {
   complexity: ["warn", 10],
   "max-depth": ["warn", 4],
