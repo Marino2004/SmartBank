@@ -9,6 +9,7 @@
     "build": "tsc --noEmit",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
     "test:coverage": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage",
+    "test:perf": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --testPathPatterns=performance",
     "lint": "npx eslint .",
     "lint:report": "npx eslint . --format html --output-file reports/eslint-report.html && open reports/eslint-report.html",
     "typecheck": "tsc --noEmit",
